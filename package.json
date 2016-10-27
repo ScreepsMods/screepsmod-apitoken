@@ -1,0 +1,15 @@
+{
+  "name": "screepsmod-apitoken",
+  "version": "1.0.1",
+  "main": "apitoken.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Shumann",
+  "license": "ISC",
+  "keywords": [
+    "screeps",
+    "mod"
+  ],
+  "description": ""
+}
