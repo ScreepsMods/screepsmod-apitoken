@@ -1,9 +1,13 @@
 {
   "name": "screepsmod-apitoken",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "apitoken.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "2npm":"publish"
+  },
+  "devDependencies": {
+    "publish": "^0.6.0"
   },
   "author": "Adam Shumann",
   "license": "MIT",
