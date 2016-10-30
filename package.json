@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adam Shumann",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "screeps",
     "mod"
