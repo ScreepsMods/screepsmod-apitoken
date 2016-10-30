@@ -21,6 +21,7 @@ module.exports = function (config) {
   }
   if (config.backend) {
     const path = require('path')
+    const basicAuth = require('basic-auth')
     const authlib = require(path.join(path.dirname(require.main.filename), '../lib/authlib'))
     config.backend.router.post('/auth/signin', (req, res) => {
       let { email, password } = req.body
@@ -34,6 +35,19 @@ module.exports = function (config) {
       } catch(e) {
         console.error(e)
         res.status(401).json({ error: 'unauthorized' })
+      }
+    })
+    config.backend.router.post('/user/code', (req, res, next) => {
+      let { name, pass } = basicAuth(req)
+      try {
+        if (name != 'token') return next()
+        let data = verifyToken(pass)
+        authlib.genToken(data.user)
+          .then(token => {
+            req.headers['x-token'] = token
+          })
+      } catch(e) {
+        next()
       }
     })
   }
