@@ -37,19 +37,24 @@ module.exports = function (config) {
         res.status(401).json({ error: 'unauthorized' })
       }
     })
-    config.backend.router.post('/user/code', (req, res, next) => {
-      let { name, pass } = basicAuth(req)
-      try {
-        if (name != 'token') return next()
-        let data = verifyToken(pass)
-        authlib.genToken(data.user)
-          .then(token => {
-            req.headers['x-token'] = token
-          })
-      } catch(e) {
-        next()
-      }
-    })
+    let preConfig = config.backend.onExpressPreConfig
+    config.backend.onExpressPreConfig = function (app) {
+      app.post('/user/code', (req, res, next) => {
+        let { name, pass } = basicAuth(req)
+        try {
+          if (name != 'token') return next()
+          let data = verifyToken(pass)
+          authlib.genToken(data.user)
+            .then(token => {
+              req.headers['x-token'] = token
+              next()
+            })
+        } catch(e) {
+          next()
+        }
+      })
+      return preConfig(app)
+    }
   }
 }
 
