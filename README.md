@@ -2,6 +2,9 @@
 
 ## Mod to add API tokens to screeps servers
 
+# OUTDATED
+## Use screepsmod-auth instead
+
 [![NPM info](https://nodei.co/npm/screepsmod-apitoken.png?downloads=true)](https://npmjs.org/package/screepsmod-apitoken)
 
 [![Circle CI](https://circleci.com/gh/ScreepsMods/screepsmod-apitoken.svg?style=shield)](https://circleci.com/gh/ScreepsMods/screepsmod-apitoken)
